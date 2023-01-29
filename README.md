@@ -1,6 +1,6 @@
 # Tracing
 
-Elixir Library built oventelemetry that instruments traces for 
+Elixir Library built over opentelemetry that instruments traces for 
 * phoneix events
 * ecto events
 * redix(redis) events
@@ -52,6 +52,13 @@ setup
 add below line in application.ex supervision tree
 ```elixir
 Tracing.setup!() 
+```
+
+To propagate trace_id back in response headers.
+add plug to your endpoint.ex file.
+
+```elixir
+plug Tracing.propagate_trace
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
