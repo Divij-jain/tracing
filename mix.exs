@@ -25,11 +25,11 @@ defmodule Tracing.MixProject do
       {:opentelemetry, "~> 1.2"},
       # exporter
       {:opentelemetry_exporter, "~> 1.3"},
-       # api for
-       {:opentelemetry_ecto, "~> 1.1"},
-       {:opentelemetry_phoenix, "~> 1.1"},
-       {:opentelemetry_logger_metadata, "~> 0.1.0"},
-       {:opentelemetry_redix, "~> 0.1.1"}
+      # api for
+      {:opentelemetry_ecto, "~> 1.1"},
+      {:opentelemetry_phoenix, "~> 1.1"},
+      {:opentelemetry_logger_metadata, "~> 0.1.0"},
+      {:opentelemetry_redix, "~> 0.1.1"}
     ]
   end
 end
