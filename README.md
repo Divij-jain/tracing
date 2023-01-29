@@ -1,6 +1,10 @@
 # Tracing
 
-**TODO: Add description**
+Elixir Library built oventelemetry that instruments traces for 
+* phoneix events
+* ecto events
+* redix(redis) events
+* Logger metadata
 
 ## Installation
 
@@ -15,7 +19,41 @@ def deps do
 end
 ```
 
+### configuring tracing in your project
+
+```elixir
+config :tracing, :repo_telemetry_prefix, [:app_name, :repo]
+```
+
+### To export traces on console/stdout
+```elixir
+config :opentelemetry, :processors,
+  otel_batch_processor: %{
+    exporter: {:otel_exporter_stdout, []}
+  }
+```
+
+### To export traces on directly to remote port 
+```elixir
+config :opentelemetry, :processors,
+  otel_batch_processor: %{
+    exporter: {
+      :opentelemetry_exporter,
+      %{
+        endpoints: [
+          {:http, 'localhost', 55681, []}
+        ]
+      }
+    }
+  }
+```
+
+setup 
+add below line in application.ex supervision tree
+```elixir
+Tracing.setup!() 
+```
+
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/tracing>.
-
